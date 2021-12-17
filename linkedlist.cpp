@@ -57,18 +57,33 @@ bool search(node *head, int val)
 }
 
 void deleteAtHead(node *&head)
-{   node *toDelete=head;
-    head=head->next;
+{
+    node *toDelete = head;
+    head = head->next;
     delete toDelete;
 }
 void deleteAtTail(node *&head)
 {
-    node*temp=head;
-    while (temp->next!=NULL)
+    node *temp = head;
+    while (temp->next != NULL)
     {
-        
+        temp = temp->next;
     }
-    
+    node *toDelete = temp;
+    temp->next=temp->next->next;
+    delete toDelete;
+}
+
+void deleteAtKey(node *&head, int key)
+{
+    node *temp = head;
+    while (temp->next->data != key)
+    {
+        temp = temp->next;
+    }
+    node *toDelete = temp;
+    temp->next=temp->next->next;
+    delete toDelete;
 }
 
 void printlist(node *head)
