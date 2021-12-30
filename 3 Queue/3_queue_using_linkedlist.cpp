@@ -117,7 +117,7 @@ int main()
     q.push(7);
     q.push(11);
     q.printqueue();
-    cout << "Peek " << q.frontele() << endl;
+    cout << "front " << q.frontele() << endl;
     cout << "back " << q.backele() << endl;
     q.pop();
     q.printqueue();
