@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 4
+#define queSolved 9
 
 struct Node
 {
@@ -194,16 +194,108 @@ public:
 };
 */
 
+/*
+6 Delete without head pointer
+https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1/?category[]=Linked%20List&category[]=Linked%20List&difficulty[]=0&page=1&query=category[]Linked%20Listdifficulty[]0page1category[]Linked%20List
 class Solution
 {
-public:
-    Node *compute(Node *head)
+    public:
+    //Function to delete a node without any reference to head pointer.
+    void deleteNode(Node *del)
     {
-        Node *newHead, *temp = head;
-        int max= head->data;
-        while(temp)
-        {
+        if(del == NULL || del->next == NULL)
+            return;
+        Node *temp = del->next;
+        del->data = del->next->data;
+        del->next = del->next->next;
+        delete temp;
+    }
 
+};
+*/
+
+/*
+7 Nth node from end of linked list
+https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List#
+
+int getNthFromLast(Node *head, int n)
+{
+    Node* temp=head;
+    int Tnodes=0;
+    while(temp)
+    {
+        Tnodes++;
+        temp = temp->next;
+    }
+    temp = head;
+    if(n>Tnodes)
+        return -1;
+    while(temp)
+    {
+        if(Tnodes == n)
+        {
+            return temp->data;
+        }
+        Tnodes--;
+        temp = temp->next;
+    }
+}
+*/
+
+/*
+8 Remove duplicate element from sorted Linked
+https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List
+
+Node *removeDuplicates(Node *head)
+{
+    Node *temp = head;
+    while (temp)
+    {
+        if (temp->next == NULL)
+            break;
+        else if (temp->data == temp->next->data)
+        {
+            temp->next = temp->next->next;
+        }
+        else
+        {
+            temp = temp->next;
         }
     }
-};
+    return head;
+}
+*/
+
+/*
+9 Find length of Loop
+https://practice.geeksforgeeks.org/problems/find-length-of-loop/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=solved&page=1&query=category[]Linked%20ListproblemStatussolvedpage1category[]Linked%20List
+
+int countNodesinLoop(struct Node *head)
+{
+    unordered_set<Node *> s;
+    int ans=1;
+    Node* temp = head, *start=NULL, *end=NULL;
+    while(temp)
+    {
+        if(s.find(temp->next)!=s.end())
+        {
+            start = temp->next;
+            end = temp;
+            break;
+        }
+        else
+        {
+            s.insert(temp);
+        }
+        temp = temp->next;
+    }
+    if(start==NULL)
+        return 0;
+    while(start!=end)
+    {
+        ans++;
+        start= start->next;
+    }
+    return ans;
+}
+*/
