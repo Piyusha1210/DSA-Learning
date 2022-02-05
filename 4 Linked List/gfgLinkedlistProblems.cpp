@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 9
+#define queSolved 11
 
 struct Node
 {
@@ -298,4 +298,52 @@ int countNodesinLoop(struct Node *head)
     }
     return ans;
 }
+*/
+
+/*
+10 Detect Loop in linked list
+https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&sortBy=submissions&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1sortBysubmissionscategory[]Linked%20List#
+class Solution
+{
+    public:
+    //Function to check if the linked list has a loop.
+    bool detectLoop(Node* head)
+    {
+        set<Node *>s;
+        while(head)
+        {
+            if(s.find(head)!=s.end())
+                return true;
+            else
+                s.insert(head);
+            head = head->next;
+        }
+        return false;
+    }
+};
+*/
+
+/*
+11 Finding middle element in a linked list
+https://practice.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&sortBy=submissions&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1sortBysubmissionscategory[]Linked%20List
+class Solution{
+    public:
+    int getMiddle(Node *head)
+    {
+        int c=0,i=0;
+        Node *temp = head;
+        while(temp)
+        {
+            c++;
+            temp = temp->next;
+        }
+        temp = head;
+        while(temp && i<c/2)
+        {
+            i++;
+            temp = temp->next;
+        }
+        return temp->data;
+    }
+};
 */
