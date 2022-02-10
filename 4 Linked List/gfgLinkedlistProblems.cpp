@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 11
+#define queSolved 12
 
 struct Node
 {
@@ -346,4 +346,51 @@ class Solution{
         return temp->data;
     }
 };
+*/
+
+/*
+12 Split a Circular Linked List into two halves
+https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List#
+
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    int i=1,c=1;
+    Node *temp = head->next;
+    Node *head1=NULL, *head2=NULL;
+    Node *tail1=NULL, *tail2=NULL;
+    while(temp != head)
+    {
+        c++;
+        temp = temp->next;
+    }
+
+    if(c==1)
+    {
+        head1=head;
+        head2=head;
+        *head1_ref = head1;
+        *head2_ref = head2;
+        return;
+    }
+
+    temp = head;
+    head1 = head;
+    while(i <= (c + 1) / 2)
+    {
+        tail1 = temp;
+        temp = temp->next;
+        i++;
+    }
+    tail1->next = head1;
+    head2 = temp;
+    while(temp != head)
+    {
+        tail2 = temp;
+        temp = temp->next;
+    }
+    tail2->next = head2;
+
+    *head1_ref = head1;
+    *head2_ref = head2;
+}
 */
