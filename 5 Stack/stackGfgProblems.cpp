@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 3
+// #define queSolved 6
 
+/*
 // 1 Implement two stacks in an array
 // https://practice.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1/?category[]=Stack&category[]=Stack&difficulty[]=0&page=1&query=category[]Stackdifficulty[]0page1category[]Stack#
 // Function to push an integer into the stack1.
@@ -104,7 +105,9 @@ int twoStacks ::pop2()
 }
 
 // { Driver Code Starts
+*/
 
+/*
 // 2 Reverse a string using Stack
 // https://practice.geeksforgeeks.org/problems/reverse-a-string-using-stack/1/?category[]=Stack&category[]=Stack&difficulty[]=0&page=1&query=category[]Stackdifficulty[]0page1category[]Stack#
 #include <bits/stdc++.h>
@@ -144,7 +147,9 @@ char *reverse(char *S, int len)
     }
     return S;
 }
+*/
 
+/*
 // 3 Delete middle element of a stack
 // https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1/?category[]=Stack&category[]=Stack&difficulty[]=0&page=1&query=category[]Stackdifficulty[]0page1category[]Stack#
 #include <bits/stdc++.h>
@@ -204,3 +209,113 @@ int main()
     return 0;
 }
 // } Driver Code Ends
+*/
+
+/*
+4 Get min at pop
+https://practice.geeksforgeeks.org/problems/get-min-at-pop/1/?category[]=Stack&category[]=Stack&page=1&query=category[]Stackpage1category[]Stack#
+
+stack<int> _push(int arr[],int n)
+{
+    stack<int> st;
+    for(int i=0; i<n; i++)
+    {
+        st.push(arr[i]);
+    }
+    return st;
+}
+
+//Function to print minimum value in stack each time while popping.
+void _getMinAtPop(stack<int>s)
+{
+    stack<int> p;
+    vector<int> v;
+    int min = INT_MAX;
+    while(!s.empty())
+    {
+        p.push(s.top());
+        s.pop();
+    }
+    while(!p.empty())
+    {
+        if(p.top() < min)
+            min = p.top();
+
+        v.push_back(min);
+        s.push(p.top());
+        p.pop();
+    }
+    int n = v.size();
+    for(int i=0; i<n; i++)
+    {
+        cout<<v[n-1-i]<<" ";
+    }
+}
+*/
+
+/*
+5 Print Bracket Numberv
+https://practice.geeksforgeeks.org/problems/print-bracket-number4058/1/?category[]=Stack&category[]=Stack&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]StackproblemStatusunsolveddifficulty[]0page1category[]Stack#
+
+class Solution{
+public:
+    vector<int> barcketNumbers(string S)
+    {
+        vector<int> v;
+        stack<int> st;
+        int k=1;
+        for(int i=0; i<S.size(); i++)
+        {
+            if(S[i]=='(')
+            {
+                st.push(k);
+                v.push_back(k);
+                k++;
+            }
+            else if(S[i]==')')
+            {
+                v.push_back(st.top());
+                st.pop();
+            }
+        }
+        return v;
+    }
+};
+*/
+
+/*
+6 Parenthesis Checker
+https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1/?category[]=Stack&category[]=Stack&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]StackproblemStatusunsolveddifficulty[]0page1category[]Stack#
+
+class Solution
+{
+    public:
+    //Function to check if brackets are balanced or not.
+    // map<char,int> m = {{'(',1},{')',2},{'[',3},{']',4},{'{',5},{'}',6}};
+    bool ispar(string x)
+    {
+        stack<char> st;
+        for(int i=0; i<x.size(); i++)
+        {
+            if(x[i]=='(' || x[i]=='[' || x[i]=='{')
+                st.push(x[i]);
+            else
+            {
+                if(st.empty())
+                    return false;
+                else if(x[i]==')' && st.top()=='(')
+                    st.pop();
+                else if(x[i]==']' && st.top()=='[')
+                    st.pop();
+                else if(x[i]=='}' && st.top()=='{')
+                    st.pop();
+                else
+                    return false;
+            }
+        }
+        if(!st.empty())
+            return false;
+        return true;
+    }
+};
+*/
