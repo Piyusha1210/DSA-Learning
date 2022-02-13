@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 6
+// #define queSolved 7
 
 /*
 // 1 Implement two stacks in an array
@@ -316,6 +316,45 @@ class Solution
         if(!st.empty())
             return false;
         return true;
+    }
+};
+*/
+
+/*
+7 Reversing the equation
+https://practice.geeksforgeeks.org/problems/reversing-the-equation2205/1/?category[]=Stack&category[]=Stack&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]StackproblemStatusunsolveddifficulty[]0page1category[]Stack
+
+class Solution
+{
+  public:
+    string reverseEqn (string s)
+    {
+        stack<string> st;
+        string t,p;
+        for(int i=0; i<s.size(); i++)
+        {
+            if(s[i]=='+' || s[i]=='-' || s[i]=='*' || s[i]=='/')
+            {
+                st.push(t);
+                t.erase();
+                t.push_back(s[i]);
+                st.push(t);
+                t.erase();
+            }
+            else
+            {
+                t.push_back(s[i]);
+            }
+        }
+        st.push(t);
+        t.erase();
+        while(!st.empty())
+        {
+            t = st.top();
+            p.append(t);
+            st.pop();
+        }
+        return p;
     }
 };
 */
