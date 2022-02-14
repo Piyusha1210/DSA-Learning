@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define queSolved 1
+#define queSolved 2
 
 /*
 1 Implement Atoi
@@ -35,5 +35,31 @@ class Solution{
             ans*=-1;
         return ans;
     }
+};
+*/
+
+/*
+2 Remove Duplicates
+https://practice.geeksforgeeks.org/problems/remove-duplicates3034/1/?category[]=Strings&category[]=Strings&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]StringsproblemStatusunsolveddifficulty[]0page1category[]Strings#
+
+class Solution{
+public:	
+		
+	string removeDups(string s) 
+	{
+	    int n = s.size();
+        unordered_set<char> set;
+        for(int i=0; i<s.size(); i++)
+        {
+            if(set.find(s[i]) == set.end())
+                set.insert(s[i]);
+            else
+            {
+                s.erase(s.begin()+i);
+                i--;
+            }
+        }
+        return s;
+	}
 };
 */

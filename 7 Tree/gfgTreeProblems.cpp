@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 10
+// #define queSolved 11
 struct Node
 {
     int data;

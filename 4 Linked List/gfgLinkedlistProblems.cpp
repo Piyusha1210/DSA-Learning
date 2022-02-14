@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 12
+#define queSolved 13
 
 struct Node
 {
@@ -392,5 +392,79 @@ void splitList(Node *head, Node **head1_ref, Node **head2_ref)
 
     *head1_ref = head1;
     *head2_ref = head2;
+}
+*/
+
+/*
+13 Split Singly Linked List Alternatingly
+https://practice.geeksforgeeks.org/problems/split-singly-linked-list-alternatingly/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List
+
+struct Node *a, *b;
+void alternatingSplitList(struct Node* head) 
+{
+    Node *temp=head, *t1=NULL, *t2=NULL;
+    while(temp)
+    {
+        if(temp)
+        {
+            if(t1==NULL)
+            {
+                a = temp;
+                t1 = temp;
+                temp = temp->next;
+                t1->next = NULL;
+            }
+            else
+            {
+                t1->next = temp;
+                temp = temp->next;
+                t1 = t1->next;
+                t1->next = NULL;            
+            }
+        }
+        if(temp)
+        {
+            if(t2==NULL)
+            {
+                b = temp;
+                t2 = temp;
+                temp = temp->next;
+                t2->next = NULL;
+            }
+            else
+            {
+                t2->next = temp;
+                temp = temp->next;
+                t2 = t2->next;
+                t2->next = NULL;            
+            }
+        }    
+    }
+}
+*/
+
+/*
+14 Merge Lists Alternatingly
+https://practice.geeksforgeeks.org/problems/merge-list-alternatingly/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List#
+
+void mergeList(struct Node **p, struct Node **q)
+{
+    Node *temp, *t1 = *p, *t2;
+    while(t1)
+    {
+        temp = t1->next;
+        if(*q)
+        {
+            t2 = *q;
+            *q = (*q)->next;
+            t1->next = t2;
+            t2->next = temp;
+            t1 = t1->next->next;
+        }
+        else
+        {
+            t1 = t1->next;
+        }
+    }
 }
 */
