@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 11
+// #define queSolved 12
 struct Node
 {
     int data;
@@ -272,6 +272,35 @@ class Solution
             return true;
         else
             return false;
+    }
+};
+*/
+
+/*
+12 Find the Closest Element in BST 
+https://practice.geeksforgeeks.org/problems/find-the-closest-element-in-bst/1/?category[]=Tree&category[]=Tree&problemStatus=unsolved&difficulty[]=1&page=1&query=category[]TreeproblemStatusunsolveddifficulty[]1page1category[]Tree
+
+class Solution
+{
+    public:
+    //Function to find the least absolute difference between any node
+	//value of the BST and the given integer.
+	void traverse(Node *root, int k, int &min)
+	{
+	    if(!root)
+	        return;
+	       
+	    int diff = abs(root->data - k);
+	    if(diff<min)
+	        min = diff;
+	    traverse(root->left, k, min);
+	    traverse(root->right, k, min);
+	}
+    int minDiff(Node *root, int K)
+    {
+        int min=INT_MAX;
+        traverse(root, K, min);
+        return min;
     }
 };
 */

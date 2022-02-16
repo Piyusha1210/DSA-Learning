@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 13
+#define queSolved 17
 
 struct Node
 {
@@ -467,4 +467,150 @@ void mergeList(struct Node **p, struct Node **q)
         }
     }
 }
+*/
+
+/*
+15 Polynomial Addition
+https://practice.geeksforgeeks.org/problems/polynomial-addition/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=1&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]1page1category[]Linked%20List#
+
+struct Node
+{
+    int coeff;
+    int pow;
+    struct Node* next;
+    
+    Node(int c, int p){
+        coeff = c;
+        pow = p;
+        next = NULL;
+    }
+    
+};
+class Solution{
+  public:
+    Node* addPolynomial(Node *p1, Node *p2)
+    {
+        Node *head=NULL, *curr=NULL, *t;
+        while(p1 && p2)
+        {
+            if(p1->pow == p2->pow)
+            {
+                p1->coeff += p2->coeff;
+                t = p1;
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+            else if(p1->pow > p2->pow)
+            {
+                t = p1;
+                p1 = p1->next;
+            }
+            else
+            {
+                t = p2;
+                p2 = p2->next;
+            }
+            
+            if(head == NULL)
+            {
+                head = t;
+                curr = t;
+            }
+            else
+            {
+                curr->next = t;
+                curr = curr->next;
+                curr->next = NULL;
+            }
+        }
+        if(p1)
+        {
+            curr->next = p1;
+        }
+        if(p2)
+        {
+            curr->next = p2;
+        }
+        return head;
+    }
+};
+*/
+
+/*
+16 Merge two sorted linked lists
+https://practice.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=1&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]1page1category[]Linked%20List
+
+Node* sortedMerge(Node* head1, Node* head2)  
+{
+    Node *head=NULL, *curr=NULL, *t;
+    while(head1 && head2)
+    {
+        if(head1->data < head2->data)
+        {
+            t = head1;
+            head1 = head1->next;
+        }
+        else
+        {
+            t = head2;
+            head2 = head2->next;
+        }
+            
+        if(head == NULL)
+        {
+            head = t;
+            curr = t;
+        }
+        else
+        {
+            curr->next = t;
+            curr = curr->next;
+            curr->next = NULL;
+        }
+    }
+    if(head1)
+    {
+        curr->next = head1;
+    }
+    if(head2)
+    {
+        curr->next = head2;
+    }
+    return head;
+} 
+*/
+
+/*
+17 Delete nodes having greater value on right
+https://practice.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=1&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]1page1category[]Linked%20List
+
+class Solution
+{
+    public:
+    void traverse(Node *node, Node *&newhead)
+    {
+        if(node == NULL)
+            return;
+        traverse(node->next, newhead);
+        
+        if(newhead == NULL)
+        {
+            newhead = node;
+        }
+        else if(newhead->data <= node->data)
+        {
+            Node* t = node;
+            t->next = newhead;
+            newhead = t;
+        }
+    }
+    
+    Node *compute(Node *head)
+    {
+        Node *newhead=NULL;
+        traverse(head, newhead);
+        return newhead;
+    }
+    
+};
 */
