@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 7
+// #define queSolved 9
 
 /*
 // 1 Implement two stacks in an array
@@ -357,4 +357,72 @@ class Solution
         return p;
     }
 };
+*/
+
+/*
+8 String Manipulation
+https://practice.geeksforgeeks.org/problems/string-manipulation3706/1/?page=1&difficulty[]=0&category[]=Stack&sortBy=submissions
+
+class Solution{
+    public:
+    int removeConsecutiveSame(vector <string > v)
+    {
+        stack<string> st;
+        for(int i=0; i<v.size(); i++)
+        {
+            if(st.size()>0 && st.top()==v[i])
+            {
+                st.pop();
+            }
+            else
+            {
+                st.push(v[i]);
+            }
+        }
+        int c=0;
+        while(!st.empty())
+        {
+            c++;
+            st.pop();
+        }
+        return c;
+    }
+};
+*/
+
+/*
+9 Reverse First K elements of Queue
+https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1/?page=1&difficulty[]=0&status[]=unsolved&category[]=Stack&sortBy=submissions
+
+queue<int> modifyQueue(queue<int> q, int k) {
+    stack<int> s1, s2;
+    int i=0;
+    while(i<k)
+    {
+        s1.push(q.front());
+        q.pop();
+        i++;
+    }
+    while(!q.empty())
+    {
+        s2.push(q.front());
+        q.pop();
+    }
+    while(!s1.empty())
+    {
+        q.push(s1.top());
+        s1.pop();
+    }
+    while(!s2.empty())
+    {
+        s1.push(s2.top());
+        s2.pop();
+    }
+    while(!s1.empty())
+    {
+        q.push(s1.top());
+        s1.pop();
+    }
+    return q;
+}
 */

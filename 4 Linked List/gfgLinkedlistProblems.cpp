@@ -614,3 +614,32 @@ class Solution
     
 };
 */
+
+/*
+18 Insert in a Sorted List
+https://practice.geeksforgeeks.org/problems/insert-in-a-sorted-list/1/?page=1&difficulty[]=0&status[]=unsolved&category[]=Linked%20List&sortBy=submissions#
+
+class Solution{
+  public:
+    // Should return head of the modified linked list
+    Node *sortedInsert(struct Node* head, int data) {
+        Node *newnode = new Node(data);
+        if(head->data >= data)
+        {
+            newnode->next = head;
+            head = newnode;
+        }
+        else
+        {
+            Node *temp = head;
+            while(temp->next && temp->next->data < data)
+            {
+                temp = temp->next;
+            }
+            newnode->next = temp->next;
+            temp->next = newnode;
+        }
+        return head;
+    }
+};
+*/
