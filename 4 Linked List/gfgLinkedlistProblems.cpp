@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 17
+#define queSolved 18
 
 struct Node
 {
@@ -400,7 +400,7 @@ void splitList(Node *head, Node **head1_ref, Node **head2_ref)
 https://practice.geeksforgeeks.org/problems/split-singly-linked-list-alternatingly/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=0&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]0page1category[]Linked%20List
 
 struct Node *a, *b;
-void alternatingSplitList(struct Node* head) 
+void alternatingSplitList(struct Node* head)
 {
     Node *temp=head, *t1=NULL, *t2=NULL;
     while(temp)
@@ -419,7 +419,7 @@ void alternatingSplitList(struct Node* head)
                 t1->next = temp;
                 temp = temp->next;
                 t1 = t1->next;
-                t1->next = NULL;            
+                t1->next = NULL;
             }
         }
         if(temp)
@@ -436,9 +436,9 @@ void alternatingSplitList(struct Node* head)
                 t2->next = temp;
                 temp = temp->next;
                 t2 = t2->next;
-                t2->next = NULL;            
+                t2->next = NULL;
             }
-        }    
+        }
     }
 }
 */
@@ -478,13 +478,13 @@ struct Node
     int coeff;
     int pow;
     struct Node* next;
-    
+
     Node(int c, int p){
         coeff = c;
         pow = p;
         next = NULL;
     }
-    
+
 };
 class Solution{
   public:
@@ -510,7 +510,7 @@ class Solution{
                 t = p2;
                 p2 = p2->next;
             }
-            
+
             if(head == NULL)
             {
                 head = t;
@@ -540,7 +540,7 @@ class Solution{
 16 Merge two sorted linked lists
 https://practice.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1/?category[]=Linked%20List&category[]=Linked%20List&problemStatus=unsolved&difficulty[]=1&page=1&query=category[]Linked%20ListproblemStatusunsolveddifficulty[]1page1category[]Linked%20List
 
-Node* sortedMerge(Node* head1, Node* head2)  
+Node* sortedMerge(Node* head1, Node* head2)
 {
     Node *head=NULL, *curr=NULL, *t;
     while(head1 && head2)
@@ -555,7 +555,7 @@ Node* sortedMerge(Node* head1, Node* head2)
             t = head2;
             head2 = head2->next;
         }
-            
+
         if(head == NULL)
         {
             head = t;
@@ -577,7 +577,7 @@ Node* sortedMerge(Node* head1, Node* head2)
         curr->next = head2;
     }
     return head;
-} 
+}
 */
 
 /*
@@ -592,7 +592,7 @@ class Solution
         if(node == NULL)
             return;
         traverse(node->next, newhead);
-        
+
         if(newhead == NULL)
         {
             newhead = node;
@@ -604,14 +604,14 @@ class Solution
             newhead = t;
         }
     }
-    
+
     Node *compute(Node *head)
     {
         Node *newhead=NULL;
         traverse(head, newhead);
         return newhead;
     }
-    
+
 };
 */
 
@@ -642,4 +642,101 @@ class Solution{
         return head;
     }
 };
+*/
+
+/*
+18 Partition a Linked List around a given value
+https://practice.geeksforgeeks.org/problems/partition-a-linked-list-around-a-given-value/1/?page=1&difficulty[]=1&status[]=unsolved&category[]=Linked%20List&sortBy=submissions#
+
+struct Node* partition(struct Node* head, int x) {
+    Node *temp=head;
+    Node *smallhead=NULL, *equalhead=NULL, *largehead=NULL;
+    Node *smalltail, *equaltail, *largetail;
+    while(temp)
+    {
+        if(temp->data < x)
+        {
+            if(smallhead==NULL)
+            {
+                smallhead = temp;
+                smalltail = smallhead;
+                temp = temp->next;
+                smalltail->next = NULL;
+            }
+            else
+            {
+                smalltail->next = temp;
+                smalltail = smalltail->next;
+                temp = temp->next;
+                smalltail->next = NULL;
+            }
+        }
+        else if(temp->data > x)
+        {
+            if(largehead == NULL)
+            {
+                largehead = temp;
+                largetail = largehead;
+                temp = temp->next;
+                largetail->next = NULL;
+            }
+            else
+            {
+                largetail->next = temp;
+                largetail = largetail->next;
+                temp = temp->next;
+                largetail->next = NULL;
+            }
+        }
+        else
+        {
+            if(equalhead == NULL)
+            {
+                equalhead = temp;
+                equaltail = equalhead;
+                temp = temp->next;
+                equaltail->next = NULL;
+            }
+            else
+            {
+                equaltail->next = temp;
+                equaltail = equaltail->next;
+                temp = temp->next;
+                equaltail->next = NULL;
+            }
+        }
+    }
+
+    if(smallhead==NULL)
+    {
+        if(equalhead==NULL)
+        {
+            if(largehead!=NULL)
+                head = largehead;
+        }
+        else
+        {
+            head = equalhead;
+            if(largehead != NULL)
+                equaltail->next = largehead;
+        }
+    }
+    else
+    {
+        head = smallhead;
+        if(equalhead==NULL)
+        {
+            if(largehead != NULL)
+                smalltail->next = largehead;
+        }
+        else
+        {
+            smalltail->next = equalhead;
+            if(largehead!=NULL)
+                equaltail->next = largehead;
+
+        }
+    }
+    return head;
+}
 */

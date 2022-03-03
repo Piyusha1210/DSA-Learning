@@ -63,3 +63,99 @@ public:
 	}
 };
 */
+
+/*
+3 Add Binary Strings 
+https://practice.geeksforgeeks.org/problems/add-binary-strings3805/1/?page=3&difficulty[]=1&status[]=unsolved&category[]=Strings&sortBy=submissions
+class Solution{
+public:	
+	string addBinary(string A, string B)
+	{
+	    string s;
+	    int a = A.size();
+	    int b = B.size();
+	    int c=0;
+	    int i=a-1, j=b-1;
+	    for(; i>=0 && j>=0; i--, j--)
+	    {
+	        int val = (A[i]-48) + (B[j]-48)+c;
+	        if(val==0)
+	        {
+	            s.push_back('0');
+	            c = 0;
+	        }
+	        else if(val == 1)
+	        {
+	            s.push_back('1');
+	            c = 0;
+	        }
+	        else if(val == 2)
+	        {
+	            s.push_back('0');
+	            c = 1;
+	        }
+	        else
+	        {
+	            s.push_back('1');
+	            c = 1;
+	        }
+	    }
+	    while(i>=0)
+	    {
+	       int val = (A[i]-48) + c;
+	        if(val==0)
+	        {
+	            s.push_back('0');
+	            c = 0;
+	        }
+	        else if(val == 1)
+	        {
+	            s.push_back('1');
+	            c = 0;
+	        }
+	        else if(val == 2)
+	        {
+	            s.push_back('0');
+	            c = 1;
+	        }
+	        else
+	        {
+	            s.push_back('1');
+	            c = 1;
+	        } 
+	        i--;
+	    }
+	    while(j>=0)
+	    {
+	       int val = (B[j]-48) + c;
+	        if(val==0)
+	        {
+	            s.push_back('0');
+	            c = 0;
+	        }
+	        else if(val == 1)
+	        {
+	            s.push_back('1');
+	            c = 0;
+	        }
+	        else if(val == 2)
+	        {
+	            s.push_back('0');
+	            c = 1;
+	        }
+	        else
+	        {
+	            s.push_back('1');
+	            c = 1;
+	        } 
+	        j--;
+	    }
+	    if(c==1)
+	        s.push_back('1');
+	    reverse(s.begin(), s.end());
+	    while(s[0]=='0')
+	        s.erase(s.begin());
+	    return s;
+	}
+};
+*/
