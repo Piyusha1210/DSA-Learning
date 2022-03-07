@@ -159,3 +159,29 @@ public:
 	}
 };
 */
+
+/*
+4 Roman Number to Integer
+https://practice.geeksforgeeks.org/problems/roman-number-to-integer3201/1/?page=1&difficulty[]=0&status[]=unsolved&category[]=Strings&sortBy=submissions
+
+class Solution {
+  public:
+    int romanToDecimal(string &s) {
+        map<char, int> map = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+        int ans = 0, n = s.size();
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (map[s[i]] >= map[s[i + 1]])
+            {
+                ans += map[s[i]];
+            }
+            else
+            {
+                ans -= map[s[i]];
+            }
+        }
+        ans += map[s[n - 1]];
+        return ans;
+    }
+};
+*/
