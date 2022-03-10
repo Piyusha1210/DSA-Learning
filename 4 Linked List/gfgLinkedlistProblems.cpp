@@ -2,7 +2,7 @@
 using namespace std;
 #define MAX 20
 
-#define queSolved 18
+#define queSolved 19
 
 struct Node
 {
@@ -739,4 +739,30 @@ struct Node* partition(struct Node* head, int x) {
     }
     return head;
 }
+*/
+
+/*
+19 Reverse a linked list
+https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1/?page=1&category[]=Linked%20List&sortBy=submissions
+
+class Solution
+{
+    public:
+    //Function to reverse a linked list.
+    struct Node* reverseList(struct Node *head)
+    {
+        Node *prev=NULL, *curr=head, *next;
+        while(curr)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        
+        }
+        head = prev;
+        return head;
+    }
+    
+};
 */
