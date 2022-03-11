@@ -72,3 +72,31 @@ class Solution{
     }
 };
 */
+
+/*
+3 Earthquake and the Paint Shop
+https://practice.geeksforgeeks.org/problems/earthquake-and-the-paint-shop4518/1/?page=1&difficulty[]=0&status[]=unsolved&category[]=Map&sortBy=submissions
+
+struct alphanumeric {
+    string name;
+    int count;
+};
+class Solution {
+  public:
+    vector<alphanumeric> sortedStrings(int N, vector<string> A) {
+        map<string,int> mp;
+        for(int i=0; i<N; i++)
+        {
+            mp[A[i]]++;
+        }
+        
+        vector<alphanumeric> v;
+        for(auto it:mp)
+        {
+            v.push_back({it.first, it.second});
+        }
+        return v;
+    }
+};
+
+*/

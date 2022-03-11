@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define queSolved 2
+#define queSolved 5
 
 /*
 1 Implement Atoi
@@ -182,6 +182,38 @@ class Solution {
         }
         ans += map[s[n - 1]];
         return ans;
+    }
+};
+*/
+
+/*
+5 Rearrange a string
+https://practice.geeksforgeeks.org/problems/rearrange-a-string4100/1/?page=4&difficulty[]=0&status[]=unsolved&category[]=Strings&sortBy=submissions#
+class Solution
+{
+  public:
+    string arrangeString(string str)
+    {
+        int n=0;
+        for(int i=0; i<str.size(); i++)
+        {
+            if(str[i]>=48 && str[i]<=57)
+            {
+                n+=(str[i]-48);
+                str.erase(str.begin()+i);
+                i--;
+            }
+        }
+        int k = str.size();
+        sort(str.begin(), str.end());
+        
+        while(n)
+        {
+            str.insert(str.begin()+k, char(n%10 + 48));
+            n/=10;
+        }
+        return str;
+        
     }
 };
 */

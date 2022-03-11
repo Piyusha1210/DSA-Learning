@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// #define queSolved 9
+// #define queSolved 10
 
 /*
 // 1 Implement two stacks in an array
@@ -424,5 +424,46 @@ queue<int> modifyQueue(queue<int> q, int k) {
         s1.pop();
     }
     return q;
+}
+*/
+
+/*
+10 Delete array elements which are smaller than next or become smaller 
+https://practice.geeksforgeeks.org/problems/delete-array-elements-which-are-smaller-than-next-or-become-smaller3115/1/?page=1&difficulty[]=0&status[]=unsolved&category[]=Stack&sortBy=submissions
+
+vector<int> deleteElement(int arr[],int n,int k)
+{
+    stack<int> st;
+    vector<int> v;
+    int i=0;
+    for(; i<n && k>0;)
+    {
+        if(st.empty())
+        {
+            st.push(arr[i]);
+            i++;
+        }
+        else if(arr[i]>st.top())
+        {
+            st.pop();
+            k--;
+        }
+        else
+        {
+            st.push(arr[i]);
+            i++;
+        }
+    }
+    while(!st.empty())
+    {
+        v.push_back(st.top());
+        st.pop();
+    }
+    reverse(v.begin(), v.end());
+    for(; i<n; i++)
+    {
+        v.push_back(arr[i]);
+    }
+    return v;
 }
 */
