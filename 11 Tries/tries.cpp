@@ -34,12 +34,12 @@ public:
     void insertWord(string word)
     {
         insertUtil(root, word);
+        return;
     }
     void deleteWord(string word)
     {
-        if (!searchUtil(root, word))
-            return;
         deleteUtil(root, word);
+        return;
 
         // ?? To be Complete !
     }
@@ -91,9 +91,25 @@ private:
         return searchUtil(child, word.substr(1));
     }
 
-    bool deleteUtil(TrieNode *root, string word)
+    void deleteUtil(TrieNode *root, string word)
     {
-        
+        // Base Case
+        if (word.size() == 0)
+        {
+            root->isTerminate = false;
+        }
+        int idx = word[0] - 'A';
+        TrieNode *child;
+
+        if (root->children[idx] == NULL)
+        {
+            return;
+        }
+
+        // Recursion *****
+        child = root->children[idx];
+        deleteUtil(child, word.substr(1));
+        return;
     }
 };
 
