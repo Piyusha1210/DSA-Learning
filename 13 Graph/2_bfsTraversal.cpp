@@ -4,9 +4,8 @@ using namespace std;
 class Graph
 {
     map<int, set<int>> adj;
-    unordered_map<int, bool> bfsVisited, dfsVisited;
+    unordered_map<int, bool> bfsVisited;
     vector<int> bfsList;
-    vector<int> dfsList;
 
 public:
     void insertEdge(int u, int v, bool direction)
@@ -69,42 +68,6 @@ public:
         }
         cout<<endl;
     }
-
-    void dfs(int root)
-    {
-        stack<int> s;
-        s.push(root);
-        dfsVisited[root] = true;
-        while (!s.empty())
-        {
-            int top = s.top();
-            s.pop();
-            dfsList.push_back(top);
-            for (auto it : adj[top])
-            {
-                if (!dfsVisited[it])
-                {
-                    s.push(it);
-                    dfsVisited[it] = true;
-                }
-            }
-        }
-        return;
-    }
-    void dfsTraversal()
-    {
-        for (auto it : adj)
-        {
-            if (!dfsVisited[it.first])
-                dfs(it.first);
-        }
-        cout<<"DFS Traversal:\n";
-        for (int i = 0; i < dfsList.size(); i++)
-        {
-            cout << dfsList[i] << "->";
-        }
-        cout<<endl;
-    }
 };
 
 int main()
@@ -126,8 +89,6 @@ int main()
 
     // For BFS Traversal
     g->bfsTraversal();
-    g->dfsTraversal();
-    cout<<"work";
     return 0;
 }
 
