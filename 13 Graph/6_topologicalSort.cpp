@@ -3,8 +3,11 @@ using namespace std;
 
 class Graph
 {
+public:
     map<int, set<int>> adj;
     unordered_map<int, bool> visited, dfsVisited;
+    stack<int> st;
+    vector<int> topologicalSort;
 
 public:
     void insertEdge(int u, int v)
@@ -41,11 +44,12 @@ public:
             if (isCyclicDFS(it))
                 return true;
         }
+        st.push(root);
         dfsVisited[root] = false;
         return false;
     }
 
-    void detectCycle()
+    bool detectCycle()
     {
         bool ans;
         for (auto it : adj)
@@ -59,9 +63,18 @@ public:
         if (ans)
             cout << "Cycle Detected" << endl;
         else
-            cout << "No Cycle Detected" << endl;
+        {
+            // cout << "No Cycle Detected" << endl;
+            while (!st.empty())
+            {
+                topologicalSort.push_back(st.top());
+                st.pop();
+            }
+            
 
-        return;
+        }
+
+        return ans;
     }
 };
 
@@ -82,11 +95,23 @@ int main()
     g->printAdjacenyList();
     cout << endl;
 
-    g->detectCycle();
+
+    // for DAG -> Directed Acyclic Graph Only
+    // for cycle issue 1->2; 2->3; 3->1;
+
+    if (!g->detectCycle())
+    {
+        for (int i = 0; i < g->topologicalSort.size(); i++)
+        {
+            cout<<g->topologicalSort[i]<<" ";
+        }
+        
+    }
     return 0;
 }
 
 /*
+Test Case - 1
 5
 5
 1 2
@@ -95,4 +120,12 @@ int main()
 4 5
 2 4
 5 1
+
+Test Case - 2
+4
+4
+0 1
+1 2
+0 3
+3 2
 */
