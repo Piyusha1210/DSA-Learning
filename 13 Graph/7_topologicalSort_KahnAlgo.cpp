@@ -1,97 +1,106 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Graph
+void topologicalSort(int n, int m, vector<vector<int>> v)
 {
     map<int, set<int>> adj;
+    for (int i = 0; i < v.size(); i++)
+    {
+        adj[v[i][0]].insert(v[i][1]);
+    }
+    for (auto it1 : adj)
+    {
+        cout << it1.first << " -> ";
+        for (auto it2 : it1.second)
+        {
+            cout << it2 << " ";
+        }
+        cout << endl;
+    }
+
+    // find In Degree
+    unordered_map<int, int> inDegree;
+    for (auto it1 : adj)
+    {
+        for (auto it2 : it1.second)
+        {
+            inDegree[it2]++;
+        }
+    }
+
+    // insert all vertex with 0 indegree in queue.
+    queue<int> q;
+    for (int i = 1; i <= n; i++)
+    {
+        if (inDegree[i] == 0)
+            q.push(i);
+    }
+
+    vector<int> ans;
     unordered_map<int, bool> bfsVisited;
-    vector<int> bfsList;
-
-public:
-    void insertEdge(int u, int v)
+    while (!q.empty())
     {
-        adj[u].insert(v);
-    }
-    void printAdjacenyList()
-    {
-        for (auto it1 : adj)
+        int front = q.front();
+        q.pop();
+        ans.push_back(front);
+        for (auto it : adj[front])
         {
-            cout << it1.first << " -> ";
-            for (auto it2 : it1.second)
+            inDegree[it]--;
+            if (inDegree[it] == 0)
             {
-                cout << it2 << " ";
-            }
-            cout << endl;
-        }
-    }
-
-    void bfs(int root)
-    {
-        queue<int> q;
-        q.push(root);
-        bfsVisited[root] = true;
-        while (!q.empty())
-        {
-            int front = q.front();
-            q.pop();
-            bfsList.push_back(front);
-            for (auto it : adj[front])
-            {
-                if (!bfsVisited[it])
-                {
-                    q.push(it);
-                    bfsVisited[it] = true;
-                }
+                q.push(it);
             }
         }
-        return;
     }
-    void bfsTraversal()
+    for (int i = 0; i < ans.size(); i++)
     {
-        for (auto it : adj)
-        {
-            if (!bfsVisited[it.first])
-                bfs(it.first);
-            // cout << "work\n";
-        }
-        cout<<"BFS Traversal:\n";
-        for (int i = 0; i < bfsList.size(); i++)
-        {
-            cout << bfsList[i] << "->";
-        }
-        cout<<endl;
+        cout << ans[i] << " ";
     }
-};
+    return;
+}
 
 int main()
 {
-    int n, m, u, v;
-    Graph *g = new Graph;
+    int n, m, x, y;
     cout << "Enter No. of Nodes: ";
     cin >> n;
     cout << "Enter No. of Edges: ";
     cin >> m;
     cout << "Enter Edges: \n";
+    vector<vector<int>> v;
     for (int i = 0; i < m; i++)
     {
-        cin >> u >> v;
-        g->insertEdge(u,v);
+        vector<int> t;
+        cin >> x >> y;
+        t.push_back(x);
+        t.push_back(y);
+        v.push_back(t);
     }
-    g->printAdjacenyList();
-    cout<<endl;
+    topologicalSort(n, m, v);
 
-    // For BFS Traversal
-    g->bfsTraversal();
+    /* We can also use this for cycle detection we just have to compare size of ans(topological array) to equal to n;
+
+    If topological array size not equal to n(no of vertices) so that it is not a valid topological sort & graph is cyclic.
+     */
     return 0;
 }
 
 /*
+Test Case - 1
 5
-6
+5
 1 2
 2 3
 3 4
 4 5
-5 1
 2 4
+5 1
+
+Test Case - 2
+4
+4
+1 2
+2 3
+1 4
+4 3
 */
