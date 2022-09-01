@@ -79,3 +79,23 @@ int main()
         cin >> u >> v >> w;
         g->insertEdge(u, v, w);
     }
+    g->printAdjacenyList();
+    cout << endl;
+
+    g->shortestPath();
+    return 0;
+}
+
+/*
+6
+9
+1 2 2
+1 3 6
+6 1 5
+6 2 3
+3 4 -1
+2 3 7
+2 4 4
+2 5 2
+4 5 -2
+*/
