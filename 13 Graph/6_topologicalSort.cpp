@@ -70,10 +70,7 @@ public:
                 topologicalSort.push_back(st.top());
                 st.pop();
             }
-            
-
         }
-
         return ans;
     }
 };
@@ -95,7 +92,6 @@ int main()
     g->printAdjacenyList();
     cout << endl;
 
-
     // for DAG -> Directed Acyclic Graph Only
     // for cycle issue 1->2; 2->3; 3->1;
 
@@ -103,9 +99,8 @@ int main()
     {
         for (int i = 0; i < g->topologicalSort.size(); i++)
         {
-            cout<<g->topologicalSort[i]<<" ";
+            cout << g->topologicalSort[i] << " ";
         }
-        
     }
     return 0;
 }

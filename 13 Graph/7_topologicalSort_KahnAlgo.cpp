@@ -37,7 +37,6 @@ void topologicalSort(int n, int m, vector<vector<int>> v)
     }
 
     vector<int> ans;
-    unordered_map<int, bool> bfsVisited;
     while (!q.empty())
     {
         int front = q.front();
