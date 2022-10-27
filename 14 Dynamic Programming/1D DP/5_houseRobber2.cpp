@@ -36,6 +36,9 @@ public:
         if(n == 1)
             return nums[0];
         
+        // Both First & Last House can't be looted together as Cycle present
+        // so we took only one of them at a time.
+
         vector<int> dp1(n, -1);
         int a = memoisation(n-2, nums, dp1);
         int a = tabulation(n-2, nums, dp1);
