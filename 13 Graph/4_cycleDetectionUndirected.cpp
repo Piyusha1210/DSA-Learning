@@ -62,7 +62,7 @@ public:
     {
         if (visited[root])
         {
-            if (parent[root] == p)
+            if (parent[p] == root)
                 return false;
             else
                 return true;
