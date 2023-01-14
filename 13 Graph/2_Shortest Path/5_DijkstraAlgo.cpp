@@ -32,6 +32,9 @@ public:
             }
         }
         return dis;
+        // Dijkstra Algo doesn't work for edges with negative weight, If their is neg weight then their will be an infinite loop.
+
+        // If we take queue here instead of pq then we will unnecessarily accessing first the longer paths else if we use pq then firts we will access shorter paths.
     }
 };
 
