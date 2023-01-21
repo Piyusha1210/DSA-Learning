@@ -1,0 +1,1 @@
+{"name":"Local: 2_XeniaBitOperation","url":"d:\\Coding\\DSA\\15 Segment Tree\\2_XeniaBitOperation.cpp","tests":[{"id":1673895238970,"input":"1 1\n1 1\n1 1","output":"1\n3\n3\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding\\DSA\\15 Segment Tree\\2_XeniaBitOperation.cpp","group":"local","local":true}
