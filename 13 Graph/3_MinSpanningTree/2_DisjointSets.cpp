@@ -33,7 +33,7 @@ public:
         if (ulp_u == ulp_v)
             return;
 
-        else if (rank[ulp_u] >= rank[ulp_v])
+        else if (size[ulp_u] >= size[ulp_v])
         {
             size[ulp_u] += size[ulp_v];
             parent[ulp_v] = ulp_u;

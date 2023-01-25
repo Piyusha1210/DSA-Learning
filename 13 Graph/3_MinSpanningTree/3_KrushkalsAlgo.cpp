@@ -68,7 +68,7 @@ public:
 
         /* Now We have to create a disJoint Data structure with the help of that we can find out if the edges nodes are already connected by some other path or not
 
-        if connected then their ultimate parrent must be same and in that sace no need to add that  edge in Minimum Spanning Tree MST
+        if connected then their ultimate parrent must be same and in that case no need to add that edge in Minimum Spanning Tree (MST).
 
         If not common parent then they two are from two diff disjoint sets then add the edge and combine sets
         */
