@@ -118,8 +118,8 @@ int main()
     Trie *t = new Trie();
     t->insertWord("PIYUSH");
     t->insertWord("AYUSH");
-    t->insertWord("PINKI");
     t->insertWord("SHIVA");
+    t->insertWord("JANVI");
     cout << "Is Present -> PIYUSH -> " << t->searchWord("PIYUSH") << endl;
     cout << "Is Present -> PIYUS -> " << t->searchWord("PIYUS") << endl;
     cout << "Is Present -> BABBAR -> " << t->searchWord("BABBAR") << endl;

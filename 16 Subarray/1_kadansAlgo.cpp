@@ -3,7 +3,7 @@ using namespace std;
 
 int kadanAlgoMaxSum(vector<int> &a)
 {
-    int sum = 0, currSum = 0, ans = INT_MIN;
+    int currSum = 0, ans = INT_MIN;
     for (int i = 0; i < a.size(); i++)
     {
         currSum += a[i];
@@ -17,7 +17,7 @@ int kadanAlgoMaxSum(vector<int> &a)
 
 int kadanAlgoMinSum(vector<int> &a)
 {
-    int sum = 0, currSum = 0, ans = INT_MAX;
+    int currSum = 0, ans = INT_MAX;
     for (int i = 0; i < a.size(); i++)
     {
         currSum += a[i];
