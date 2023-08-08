@@ -36,13 +36,12 @@ public:
             if (idx * 2 <= size && a[idx] < a[idx * 2])
             {
                 swap(a[idx], a[idx * 2]);
-                idx *= 2;
+                idx = idx * 2;
             }
             else if (idx * 2 + 1 <= size && a[idx] < a[idx * 2 + 1])
             {
                 swap(a[idx], a[idx * 2 + 1]);
-                idx *= 2;
-                idx += 1;
+                idx = idx * 2 + 1;
             }
             else
                 return;
@@ -86,7 +85,7 @@ void heapSort(int *arr, int size)
     for (int i = size; i > 1; i--)
     {
         swap(arr[i], arr[1]);
-        heapify(arr, i-1, 1);
+        heapify(arr, i - 1, 1);
     }
     return;
 }
@@ -111,13 +110,13 @@ int main()
         heapify(arr, n, i);
     }
     for (int i = 1; i <= n; i++)
-        cout<<arr[i]<<" ";;
-    cout<<endl;
+        cout << arr[i] << " ";
+    cout << endl;
 
     heapSort(arr, 5);
     for (int i = 1; i <= n; i++)
-        cout<<arr[i]<<" ";
-    cout<<endl;
+        cout << arr[i] << " ";
+    cout << endl;
 
     return 0;
 }

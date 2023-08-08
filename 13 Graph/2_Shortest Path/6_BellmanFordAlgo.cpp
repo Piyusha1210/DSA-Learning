@@ -18,14 +18,16 @@ public:
     {
         vector<int> dis(V, 1e8);
         dis[S] = 0;
+
         /*
-            Bellman Ford is valid for only Directed if Graph if Graph is not directed then make it first directive by adding parallel edges in opp dir.
+            Bellman Ford is valid for only Directed Graph, If Graph is not directed then make it first directed by adding parallel edges in opp dir.
 
             Their shouldn't be any negative edge cycle - Cycle in which their is a neagtive edge.
             If neagtive edge then it will neven end.
 
+            In Bellman-Ford Algo we iterte for n-1 times for every edge by iterating for n-1 times we are supposed to cover every vertex.
         */
-        // In Bellman-Ford Algo we iterte for n-1 times for every edge by iterating for n-1 times we are supposed to cover every vertex.
+
         for (int i = 0; i < V - 1; i++)
         {
             for (auto it : edges)
@@ -37,7 +39,9 @@ public:
                     dis[v] = dis[u] + w;
             }
         }
+
         // If therir is still any change in distance vector possible that means their is a negative edge cycle, which will never end;
+
         for (auto it : edges)
         {
             int u = it[0];

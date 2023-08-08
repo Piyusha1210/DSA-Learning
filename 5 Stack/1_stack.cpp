@@ -68,6 +68,7 @@ bool stack::isfull()
     }
     return false;
 }
+
 void stack::printStack()
 {
     if (top == -1)
@@ -84,6 +85,7 @@ void stack::printStack()
     cout << endl;
     return;
 }
+
 int main()
 {
     stack st;

@@ -71,7 +71,7 @@ int main()
     {
         int p, b;
         cin >> p >> b;
-        cout << sgt1.updateSegmentTree(0, 0, n - 1, p-1, b, height) << endl;
+        cout << sgt1.updateSegmentTree(0, 0, n - 1, p - 1, b, height) << endl;
     }
     return 0;
 }

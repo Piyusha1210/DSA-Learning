@@ -8,15 +8,14 @@ class Graph
 public:
     void insertEdge(int u, int v, bool direction)
     {
-        adj[u].insert(v);
-
         // direction->0 Directed
         // direction->1 UnDirected
+        adj[u].insert(v);
         if (direction == 1)
-        {
             adj[v].insert(u);
-        }
+        return;
     }
+
     void printAdjacenyList()
     {
         for (auto it1 : adj)

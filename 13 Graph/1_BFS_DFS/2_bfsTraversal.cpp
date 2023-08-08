@@ -10,15 +10,13 @@ class Graph
 public:
     void insertEdge(int u, int v, bool direction)
     {
-        adj[u].insert(v);
-
         // direction->0 Directed
         // direction->1 UnDirected
+        adj[u].insert(v);
         if (direction == 1)
-        {
             adj[v].insert(u);
-        }
     }
+
     void printAdjacenyList()
     {
         for (auto it1 : adj)
@@ -59,14 +57,13 @@ public:
         {
             if (!bfsVisited[it.first])
                 bfs(it.first);
-            // cout << "work\n";
         }
-        cout<<"BFS Traversal:\n";
+        cout << "BFS Traversal:\n";
         for (int i = 0; i < bfsList.size(); i++)
         {
             cout << bfsList[i] << "->";
         }
-        cout<<endl;
+        cout << endl;
     }
 };
 
@@ -85,7 +82,7 @@ int main()
         g->insertEdge(u, v, true);
     }
     g->printAdjacenyList();
-    cout<<endl;
+    cout << endl;
 
     // For BFS Traversal
     g->bfsTraversal();

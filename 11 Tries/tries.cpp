@@ -97,17 +97,15 @@ private:
         if (word.size() == 0)
         {
             root->isTerminate = false;
-        }
-        int idx = word[0] - 'A';
-        TrieNode *child;
-
-        if (root->children[idx] == NULL)
-        {
             return;
         }
+        int idx = word[0] - 'A';
+
+        if (root->children[idx] == NULL)
+            return;
 
         // Recursion *****
-        child = root->children[idx];
+        TrieNode *child = root->children[idx];
         deleteUtil(child, word.substr(1));
         return;
     }

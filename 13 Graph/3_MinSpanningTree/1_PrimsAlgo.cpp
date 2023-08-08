@@ -13,6 +13,7 @@ public:
         vector<bool> visited(V, false);
         priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
         pq.push({0, 0});
+
         /*
         Make a pq in which we will store {weight, node} & create a visited array
         In this pq we will pop out edge with min edge weight &
@@ -27,6 +28,7 @@ public:
 
             if (visited[node])
                 continue;
+
             visited[node] = true;
             sum += w;
             for (auto it : adj[node])

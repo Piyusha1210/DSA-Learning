@@ -4,6 +4,7 @@ using namespace std;
 class SGTree
 {
     vector<int> seg;
+
 public:
     SGTree(int n)
     {

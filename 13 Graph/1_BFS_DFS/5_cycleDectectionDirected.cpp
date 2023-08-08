@@ -12,6 +12,7 @@ public:
         adj[u].insert(v);
         // adj[v].insert(u);
     }
+
     void printAdjacenyList()
     {
         for (auto it1 : adj)
@@ -52,7 +53,6 @@ public:
         {
             if (!visited[it.first])
             {
-                // ans = isCyclicBFS(it.first);
                 ans = isCyclicDFS(it.first);
             }
         }

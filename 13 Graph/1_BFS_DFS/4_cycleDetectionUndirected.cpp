@@ -13,6 +13,7 @@ public:
         adj[u].insert(v);
         adj[v].insert(u);
     }
+
     void printAdjacenyList()
     {
         for (auto it1 : adj)
@@ -49,9 +50,7 @@ public:
                     if (parent[front] == it)
                         continue;
                     else
-                    {
                         return true;
-                    }
                 }
             }
         }

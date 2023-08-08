@@ -7,6 +7,7 @@ class disJointSet
 {
     vector<int> parent;
     vector<int> size;
+
 public:
     disJointSet(int n)
     {
@@ -43,15 +44,17 @@ public:
     }
 };
 
-class Solution {
+class Solution
+{
 public:
-    int makeConnected(int n, vector<vector<int>>& connections) {
+    int makeConnected(int n, vector<vector<int>> &connections)
+    {
         int ans = 0, m = connections.size();
-        if(m < n-1)
+        if (m < n - 1)
             return -1;
         disJointSet ds(n);
 
-        for(int i = 0; i < m; i++)
+        for (int i = 0; i < m; i++)
         {
             int u = connections[i][0], v = connections[i][1];
             int pu = ds.findParent(u);
@@ -62,11 +65,11 @@ public:
             }
         }
 
-        for(int u = 0; u < n; u++)
+        for (int u = 0; u < n; u++)
         {
             if (u == ds.findParent(u))
-                ans++;                
+                ans++;
         }
-        return ans-1;
+        return ans - 1;
     }
 };

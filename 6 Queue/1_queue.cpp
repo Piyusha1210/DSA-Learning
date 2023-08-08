@@ -38,7 +38,7 @@ void queue::push(int x)
 
 void queue::pop()
 {
-    if (back == n - 1 || front > back)
+    if (front == -1 || front > back)
     {
         cout << "UnderFlow\n";
         return;
@@ -49,7 +49,7 @@ void queue::pop()
 
 int queue::frontele()
 {
-    if (back == n - 1 || front > back)
+    if (front == -1 || front > back)
     {
         cout << "UnderFlow\n";
         return -1;
@@ -59,7 +59,7 @@ int queue::frontele()
 
 int queue::backele()
 {
-    if (back == n - 1 || front > back)
+    if (back == n || front > back)
     {
         cout << "UnderFlow\n";
         return -1;
@@ -69,7 +69,7 @@ int queue::backele()
 
 bool queue::isempty()
 {
-    if (back == n - 1 || front > back)
+    if (front == -1 || front > back)
     {
         return true;
     }
@@ -96,20 +96,81 @@ void queue::printqueue()
 int main()
 {
     queue q;
-    q.push(2);
-    q.push(3);
-    q.push(5);
-    q.printqueue();
-    cout << "front " << q.frontele() << endl;
-    cout << "back " << q.backele() << endl;
-    q.pop();
-    q.printqueue();
-    q.push(7);
-    q.push(11);
-    q.printqueue();
-    cout << "front " << q.frontele() << endl;
-    cout << "back " << q.backele() << endl;
-    q.pop();
-    q.printqueue();
+    int choice = 1, x;
+    while (choice)
+    {
+        cout << "\n1 Push\n";
+        cout << "2 Pop\n";
+        cout << "3 front Element\n";
+        cout << "4 Back Element\n";
+        cout << "5 Print Queue\n";
+        cout << "0 End Function\n";
+        cin >> choice;
+
+        if (choice == 0)
+        {
+            break;
+        }
+        else if (choice == 1)
+        {
+            cin >> x;
+            q.push(x);
+        }
+        else if (choice == 2)
+        {
+            q.pop();
+        }
+        else if (choice == 3)
+        {
+            cout << "front " << q.frontele() << endl;
+        }
+        else if (choice == 4)
+        {
+            cout << "back " << q.backele() << endl;
+        }
+        else if (choice == 5)
+        {
+            q.printqueue();
+        }
+    }
     return 0;
 }
+/*
+TestCase: 1
+1 2
+1 3
+1 5
+5
+3
+4
+2
+5
+1 7
+1 11
+5
+3
+4
+2
+5
+0
+
+TestCase: 2
+1 1
+1 2
+1 3
+1 4
+1 5
+1 6
+1 7
+1 8
+1 9
+1 10
+3
+4
+5
+2
+3
+4
+5
+0
+*/

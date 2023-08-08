@@ -48,6 +48,7 @@ public:
                 }
             }
         }
+
         vector<int> ans;
         int current = t;
         ans.push_back(current);

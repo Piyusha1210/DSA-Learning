@@ -1,75 +1,84 @@
 //{ Driver Code Starts
-//Initial template for C++
+// Initial template for C++
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // } Driver Code Ends
-//User function template for C++
+// User function template for C++
 
-class Solution {
-  public:
-	void shortest_distance(vector<vector<int>>&matrix){
-	    /* Multi Source SHortest Path also help in detection of negative edge cycle
-        Used When we have to find shortest distance of every node to every node
-        */
-	    int n = matrix.size();
-	    for(int i = 0; i < n; i++)
-	    {
-	        for(int j = 0; j < n; j++)
-	        {
-    	        if(matrix[i][j] == -1)
-    	            matrix[i][j] = 1e9;
-    	        if(i == j)
-    	            matrix[i][j] = 0;
-	        }
-	    }
-	    
-	    for(int via = 0; via < n; via++)
-	    {
-	        for(int i = 0; i < n; i++)
-	        {
-	            for(int j = 0; j < n; j++)
-	            {
-	                matrix[i][j] = min(matrix[i][j], matrix[i][via] + matrix[via][j]);
-	            }
-	        }
-	    }
-	    
-	    for(int i = 0; i < n; i++)
-	    {
-	        for(int j = 0; j < n; j++)
-	        {
-	            if(matrix[i][j] == 1e9)
-	                matrix[i][j] = -1;
-	                
-    	        if(matrix[i][i] < 0)
-    	        {
-    	            // If Negative Cycle
-    	        }
-	        }
-	    }
-	    return;
+class Solution
+{
+public:
+	void shortest_distance(vector<vector<int>> &matrix)
+	{
+		/*  Multi Source Shortest Path also help in detection of negative edge cycle
+			Used When we have to find shortest distance of every node to every node
+		*/
+
+		int n = matrix.size();
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if (matrix[i][j] == -1)
+					matrix[i][j] = 1e9;
+				if (i == j)
+					matrix[i][j] = 0;
+			}
+		}
+
+		for (int via = 0; via < n; via++)
+		{
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = 0; j < n; j++)
+				{
+					matrix[i][j] = min(matrix[i][j], matrix[i][via] + matrix[via][j]);
+				}
+			}
+		}
+
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if (matrix[i][j] == 1e9)
+					matrix[i][j] = -1;
+
+				if (matrix[i][i] < 0)
+				{
+					// If Negative Cycle
+				}
+			}
+		}
+		return;
 	}
 };
 
 //{ Driver Code Starts.
-int main(){
+int main()
+{
 	int tc;
 	cin >> tc;
-	while(tc--){
+	while (tc--)
+	{
 		int n;
 		cin >> n;
-		vector<vector<int>>matrix(n, vector<int>(n, -1));
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < n; j++){
+		vector<vector<int>> matrix(n, vector<int>(n, -1));
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
 				cin >> matrix[i][j];
 			}
 		}
 		Solution obj;
 		obj.shortest_distance(matrix);
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < n; j++){
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
 				cout << matrix[i][j] << " ";
 			}
 			cout << "\n";

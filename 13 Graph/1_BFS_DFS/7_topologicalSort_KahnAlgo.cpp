@@ -80,7 +80,7 @@ int main()
     /* We can also use this for cycle detection we just have to compare size of ans(topological array) to equal to n;
 
     If topological array size not equal to n(no of vertices) so that it is not a valid topological sort & graph is cyclic.
-     */
+    */
     return 0;
 }
 
