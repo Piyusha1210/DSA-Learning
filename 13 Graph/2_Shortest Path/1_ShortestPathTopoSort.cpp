@@ -41,7 +41,7 @@ public:
         }
 
         vector<int> dis(N, INT_MAX);
-        dis[0] = 0; // Dist of SOurce is Zero.
+        dis[0] = 0; // Dist of Source is Zero.
 
         // Now take out one by one top of stack(topological order)
         // check routes from it to edges have less distance

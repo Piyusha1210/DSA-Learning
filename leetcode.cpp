@@ -1,51 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+typedef long long int ll;
 
-class Solution
+int main()
 {
-public:
-    int findShortestCycle(int n, vector<vector<int>> &edges)
+    ll V, E;
+    cin >> V >> E;
+
+    vector<pair<ll, ll>> adj[V];
+
+    for (ll i = 0; i < E; i++)
     {
-        vector<int> mp[n];
-        for (int i = 0; i < edges.size(); i++)
+        ll u, v, wt;
+        cin >> u >> v >> wt;
+        adj[u].push_back({v, wt});
+        adj[v].push_back({u, wt});
+    }
+
+    ll ans = INT_MIN;
+    ll sum;
+
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
+    vector<ll> visited(V, 0);
+
+    for (ll i = 0; i < V; i++)
+    {
+        if (visited[i])
+            continue;
+
+        sum = 0;
+        pq.push({0, i});
+
+        while (!pq.empty())
         {
-            mp[edges[i][0]].push_back(edges[i][1]);
-            mp[edges[i][1]].push_back(edges[i][0]);
-        }
+            auto it = pq.top();
+            pq.pop();
+            ll node = it.second;
+            ll wt = it.first;
 
-        int ans = INT_MAX;
-        for (int i = 0; i < n; i++)
-        {
-            vector<int> dist(n, INT_MAX);
-            vector<int> par(n, -1);
-            dist[i] = 0;
+            if (visited[node] == 1)
+                continue;
 
-            queue<int> q;
-            q.push(i);
+            visited[node] = 1;
+            sum += wt;
 
-            while (!q.empty())
+            for (auto it : adj[node])
             {
-                int x = q.front();
-                q.pop();
-                for (int child : mp[x])
-                {
-                    if (dist[child] == INT_MAX)
-                    {
-                        dist[child] = 1 + dist[x];
-                        par[child] = x;
-                        q.push(child);
-                    }
-                    else if (par[x] != child and par[child] != x)
-                    {
-                        ans = min(ans, dist[x] + dist[child] + 1);
-                    }
-                }
+                ll adjNode = it.first;
+                ll edW = it.second;
+
+                if (!visited[adjNode])
+                    pq.push({edW, adjNode});
             }
         }
-        if (ans == INT_MAX)
-            return -1;
-        else
-            return ans;
+        ans = max(ans, sum);
     }
-};
+
+    cout << ans;
+    return 0;
+}
