@@ -1,4 +1,5 @@
 *.bin
 .vscode
 .cph
-.json
+.vscode
+.josn
