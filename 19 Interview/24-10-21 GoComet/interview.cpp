@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
 
     for(int i = 10; i < s.size(); i++)
     {
-        t.erase(t[0]);
+        t.erase(0, 1);
         t.push_back(s[i]);
         mp[t]++;
     }
