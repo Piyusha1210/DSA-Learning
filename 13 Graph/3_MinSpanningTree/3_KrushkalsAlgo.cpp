@@ -66,7 +66,8 @@ public:
         disJointSet ds(edges.size());
         // M * 4 * alpha
 
-        /* Now We have to create a disJoint Data structure with the help of that we can find out if the edges nodes are already connected by some other path or not
+        /* Now we have to create a disJoint data structure with the help of that we can find out 
+            if the edges nodes are already connected by some other path or not
 
         if connected then their ultimate parrent must be same and in that case no need to add that edge in Minimum Spanning Tree (MST).
 
